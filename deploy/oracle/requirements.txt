@@ -1,0 +1,12 @@
+# Dependencias diretas. Validado: Python 3.14.8, Linux x86_64, import do bot.py OK.
+nextcord==3.2.0
+nextcord-pretty-help==1.3.3
+nextcord-ext-menus==1.5.7
+rcon==2.4.9
+paramiko==5.1.0
+tinydb==4.9.0
+loguru==0.7.3
+PyYAML==6.0.3
+easydict==1.13
+# OBRIGATORIO: client/navigator.py abre o Chrome no import (client/navigator.py:17)
+selenium==4.51.0

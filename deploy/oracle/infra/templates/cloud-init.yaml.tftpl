@@ -1,0 +1,23 @@
+#cloud-config
+# Sem segredos: apenas clona o repo e executa deploy/oracle/setup-vm.sh (fonte única da instalação).
+# Log: /var/log/zombizoid-bootstrap.log   Marcador de fim: /var/lib/zombizoid-bootstrap.done
+write_files:
+  - path: /usr/local/sbin/zombizoid-bootstrap.sh
+    owner: root:root
+    permissions: "0700"
+    content: |
+      #!/usr/bin/env bash
+      set -euo pipefail
+      exec >> /var/log/zombizoid-bootstrap.log 2>&1
+      echo "== bootstrap $(date -u +%FT%TZ) arch=$(dpkg --print-architecture)"
+      export DEBIAN_FRONTEND=noninteractive
+      apt-get -o DPkg::Lock::Timeout=300 update -y
+      apt-get -o DPkg::Lock::Timeout=300 install -y git ca-certificates
+      mkdir -p /opt/zombizoid
+      [ -d /opt/zombizoid/app/.git ] || git clone --branch "${repo_ref}" "${repo_url}" /opt/zombizoid/app
+      bash /opt/zombizoid/app/deploy/oracle/setup-vm.sh "${repo_url}" "${repo_ref}"
+      touch /var/lib/zombizoid-bootstrap.done
+      echo "== bootstrap OK"
+
+runcmd:
+  - [ bash, -c, "/usr/local/sbin/zombizoid-bootstrap.sh || echo 'bootstrap FALHOU: ver /var/log/zombizoid-bootstrap.log' >&2" ]

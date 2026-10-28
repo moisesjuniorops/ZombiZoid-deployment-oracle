@@ -1,0 +1,17 @@
+# cp terraform.tfvars.example terraform.tfvars   (terraform.tfvars é ignorado pelo git)
+region           = "us-ashburn-1"
+compartment_ocid = "ocid1.compartment.oc1..xxxxxxxx"
+ssh_public_key   = "ssh-ed25519 AAAA... voce@maquina"
+admin_cidr       = "203.0.113.7/32" # SEU IP público /32 (curl -4 ifconfig.me). 0.0.0.0/0 é rejeitado.
+
+# Padrão: A1.Flex 1 OCPU / 6 GB (aarch64).
+# shape         = "VM.Standard.A1.Flex"
+# ocpus         = 1
+# memory_in_gbs = 6
+
+# Fallback se A1 der "Out of host capacity" (x86_64, 1 GB; o setup cria swap de 2 GB):
+# shape = "VM.Standard.E2.1.Micro"
+
+# availability_domain_index = 0
+# repo_url = "https://github.com/moisesjuniorops/ZombiZoid-deployment-oracle.git"
+# repo_ref = "main"

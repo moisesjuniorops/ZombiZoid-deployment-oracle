@@ -1,0 +1,7 @@
+--- a/client/ssh.py
+-        self.__password = config.get("ssh_password")
++        self.__password = config.get("ssh_password")
++        self.__key_file = config.get("ssh_key_file")
+@@ (em cada self.connect(...): connect, attached_command, write_remote_file, read_remote_file)
+-        self.connect(self.__host, port=self.__port, username=self.__user, password=self.__password)
++        self.connect(self.__host, port=self.__port, username=self.__user, password=self.__password, key_filename=self.__key_file)

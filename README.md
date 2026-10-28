@@ -51,3 +51,7 @@ pip install -r requirements.txt
 ```
 
 It is also necessary to have a chrome webdriver installed in order to perform mods information web scrapping with selenium, allowing adding mods with Steam Workshop URLs
+
+## Deploy na Oracle Cloud (Always Free)
+
+Veja [deploy/oracle/DEPLOY.md](deploy/oracle/DEPLOY.md).

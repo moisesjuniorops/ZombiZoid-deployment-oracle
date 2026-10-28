@@ -1,0 +1,20 @@
+# Copie para /opt/zombizoid/config/config.yaml, chmod 600. NUNCA commitar o real.
+app_id: "SEU_APP_ID"
+bot_key: "SUA_BOT_KEY"
+bot_token: "SEU_BOT_TOKEN"
+bot_permission: "CODIGO_PERMISSAO"
+guild_id: 0   # ID numerico do servidor Discord
+
+ssh_port: 22
+ssh_user: "usuario_ssh"
+ssh_password: "senha_ssh"   # chave correta (client/ssh.py:28); o base.yaml original tem o typo ssh_passwod
+
+rcon_port: 27015            # inteiro
+rcon_pwd: "senha_rcon"
+rcon_timeout: 10
+
+server: "IP_OU_DDNS_DO_SERVIDOR_ZOMBOID"
+start_file: "start-server.sh"
+start_path: "/home/usuario/pz"
+update_script: "/home/usuario/update_zomboid.txt"
+server_file: "/home/usuario/Zomboid/Server/servertest.ini"

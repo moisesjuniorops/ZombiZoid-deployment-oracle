@@ -1,0 +1,8 @@
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
+crash.log
+config*.yaml
+!config.example.yaml
+# Commitar infra/.terraform.lock.hcl (gerado por 'terraform init')

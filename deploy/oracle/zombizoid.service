@@ -1,0 +1,24 @@
+[Unit]
+Description=ZombiZoid Discord bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=zombizoid
+Group=zombizoid
+# O bot grava db/mods/mods.json relativo ao cwd; a pasta app precisa ser gravavel por zombizoid
+WorkingDirectory=/opt/zombizoid/app
+ExecStart=/opt/zombizoid/venv/bin/python bot.py -c /opt/zombizoid/config/config.yaml
+Restart=always
+RestartSec=10
+# Chrome headless precisa de HOME gravavel (cache do Selenium Manager)
+Environment=HOME=/opt/zombizoid/home
+Environment=PYTHONUNBUFFERED=1
+TimeoutStopSec=20
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+# NAO use ProtectHome/PrivateDevices/MemoryDenyWriteExecute: quebram snap/chromium
+
+[Install]
+WantedBy=multi-user.target
