@@ -44,7 +44,8 @@ Sem scp/sudoedit manual necessário; alternativa manual: `sudoedit /opt/zombizoi
 
 Host key do servidor Zomboid (`ssh.py:21` rejeita desconhecidos):
 ```
-ssh ubuntu@IP 'ssh-keyscan -p SSH_PORT -H SERVIDOR | sudo tee -a /etc/ssh/ssh_known_hosts >/dev/null'
+# paramiko load_system_host_keys() le ~/.ssh/known_hosts do usuario do bot (nao /etc/ssh/ssh_known_hosts)
+ssh ubuntu@IP 'sudo -u zombizoid mkdir -p -m 700 /opt/zombizoid/home/.ssh && ssh-keyscan -p SSH_PORT SERVIDOR | sudo -u zombizoid tee -a /opt/zombizoid/home/.ssh/known_hosts >/dev/null'
 ```
 O servidor Zomboid precisa aceitar login SSH por senha (`PasswordAuthentication yes`). Chave SSH exige o patch ilustrativo em `patches/`.
 
